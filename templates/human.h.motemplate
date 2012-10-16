@@ -1,5 +1,13 @@
+//
+//  <$managedObjectClassName$>.h
+//  NVivo
+//
+//  Created by <INSERT NAME HERE> on <$date %d/%m/%y$>.
+//  Copyright (c) <$date %Y$> QSR International Pty Ltd. All rights reserved.
+//
+
 #import "_<$managedObjectClassName$>.h"
 
-@interface <$managedObjectClassName$> : _<$managedObjectClassName$> {}
+@interface <$managedObjectClassName$> : _<$managedObjectClassName$>
 // Custom logic goes here.
 @end

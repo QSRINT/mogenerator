@@ -5,29 +5,21 @@
 <$if hasCustomSuperentity$><$if hasSuperentity$>#import "<$customSuperentity$>.h"
 <$else$><$if hasCustomBaseCaseImport$>#import <$baseClassImport$><$else$>#import "<$customSuperentity$>.h"<$endif$><$endif$><$endif$>
 
-<$if noninheritedAttributes.@count > 0$>
-extern const struct <$managedObjectClassName$>Attributes {<$foreach Attribute noninheritedAttributes do$>
-	<$if TemplateVar.arc$>__unsafe_unretained<$endif$> NSString *<$Attribute.name$>;<$endforeach do$>
-} <$managedObjectClassName$>Attributes;
-<$endif$>
+// Attributes
+<$foreach Attribute noninheritedAttributes do$>
+extern NSString* <$managedObjectClassName$>Attribute<$Attribute.name.initialCapitalString$>;<$endforeach do$>
 
-<$if noninheritedRelationships.@count > 0$>
-extern const struct <$managedObjectClassName$>Relationships {<$foreach Relationship noninheritedRelationships do$>
-	<$if TemplateVar.arc$>__unsafe_unretained<$endif$> NSString *<$Relationship.name$>;<$endforeach do$>
-} <$managedObjectClassName$>Relationships;
-<$endif$>
+// Relationships
+<$foreach Relationship noninheritedRelationships do$>
+extern NSString* <$managedObjectClassName$>Relationship<$Relationship.name.initialCapitalString$>;<$endforeach do$>
 
-<$if noninheritedFetchedProperties.@count > 0$>
-extern const struct <$managedObjectClassName$>FetchedProperties {<$foreach FetchedProperty noninheritedFetchedProperties do$>
-	<$if TemplateVar.arc$>__unsafe_unretained<$endif$> NSString *<$FetchedProperty.name$>;<$endforeach do$>
-} <$managedObjectClassName$>FetchedProperties;
-<$endif$>
+// Fetched Properties
+<$foreach FetchedProperty noninheritedFetchedProperties do$>
+extern NSString* <$managedObjectClassName$>FetchedProperties<$FetchedProperty.name.initialCapitalString$>;<$endforeach do$>
 
-<$if hasUserInfoKeys$>
-extern const struct <$managedObjectClassName$>UserInfo {<$foreach UserInfo userInfoKeyValues do$>
-	<$if TemplateVar.arc$>__unsafe_unretained<$endif$> NSString *<$UserInfo.key$>;<$endforeach do$>
-} <$managedObjectClassName$>UserInfo;
-<$endif$>
+// User Info Keys
+<$foreach UserInfo userInfoKeyValues do$>
+extern NSString* <$managedObjectClassName$>UserInfoKey<$UserInfo.key.initialCapitalString$>;<$endforeach do$>
 
 <$foreach Relationship noninheritedRelationships do$>@class <$Relationship.destinationEntity.managedObjectClassName$>;
 <$endforeach do$>

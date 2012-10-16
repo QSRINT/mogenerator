@@ -3,29 +3,21 @@
 
 #import "_<$managedObjectClassName$>.h"
 
-<$if noninheritedAttributes.@count > 0$>
-const struct <$managedObjectClassName$>Attributes <$managedObjectClassName$>Attributes = {<$foreach Attribute noninheritedAttributes do$>
-	.<$Attribute.name$> = @"<$Attribute.name$>",<$endforeach do$>
-};
-<$endif$>
+// Attributes
+<$foreach Attribute noninheritedAttributes do$>
+const NSString* <$managedObjectClassName$>Attribute<$Attribute.name.initialCapitalString$> = @"<$Attribute.name$>";<$endforeach do$>
 
-<$if noninheritedRelationships.@count > 0$>
-const struct <$managedObjectClassName$>Relationships <$managedObjectClassName$>Relationships = {<$foreach Relationship noninheritedRelationships do$>
-	.<$Relationship.name$> = @"<$Relationship.name$>",<$endforeach do$>
-};
-<$endif$>
+// Relationships
+<$foreach Relationship noninheritedRelationships do$>
+const NSString* <$managedObjectClassName$>Relationship<$Relationship.name.initialCapitalString$> = @"<$Relationship.name$>";<$endforeach do$>
 
-<$if noninheritedFetchedProperties.@count > 0$>
-const struct <$managedObjectClassName$>FetchedProperties <$managedObjectClassName$>FetchedProperties = {<$foreach FetchedProperty noninheritedFetchedProperties do$>
-	.<$FetchedProperty.name$> = @"<$FetchedProperty.name$>",<$endforeach do$>
-};
-<$endif$>
+// Fetched Properties
+<$foreach FetchedProperty noninheritedFetchedProperties do$>
+const NSString* <$managedObjectClassName$>FetchedProperty<$FetchedProperty.name.initialCapitalString$> = @"<$FetchedProperty.name$>";<$endforeach do$>
 
-<$if hasUserInfoKeys$>
-const struct <$managedObjectClassName$>UserInfo <$managedObjectClassName$>UserInfo = {<$foreach UserInfo userInfoKeyValues do$>
-	.<$UserInfo.key$> = @"<$UserInfo.value$>",<$endforeach do$>
-};
-<$endif$>
+// User Info Keys
+<$foreach UserInfo userInfoKeyValues do$>
+const NSString* <$managedObjectClassName$>UserInfoKey<$UserInfo.key.initialCapitalString$> = @"<$UserInfo.key$>";<$endforeach do$>
 
 @implementation <$managedObjectClassName$>ID
 @end
