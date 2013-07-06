@@ -117,7 +117,7 @@ extern NSString* <$managedObjectClassName$>UserInfoKey<$UserInfo.key.initialCapi
 <$endif$><$endforeach do$>
 
 @interface _<$managedObjectClassName$> (CoreDataGeneratedPrimitiveAccessors)
-<$foreach Attribute noninheritedAttributesSansType do$>
+<$foreach Attribute noninheritedAttributes do$>
 <$if Attribute.hasDefinedAttributeType$>
 - (<$Attribute.objectAttributeType$>)primitive<$Attribute.name.initialCapitalString$>;
 - (void)setPrimitive<$Attribute.name.initialCapitalString$>:(<$Attribute.objectAttributeType$>)value;
